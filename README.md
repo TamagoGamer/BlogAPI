@@ -1,43 +1,98 @@
-# teste
+# API de Blog com Ktor e Firebase
 
-This project was created using the [Ktor Project Generator](https://start.ktor.io).
+Esta é uma aplicação de exemplo que fornece uma API para gerenciar posts de blog, construída com Ktor e Firebase.
 
-Here are some useful links to get you started:
+## Requisitos
 
-- [Ktor Documentation](https://ktor.io/docs/home.html)
-- [Ktor GitHub page](https://github.com/ktorio/ktor)
-- The [Ktor Slack chat](https://app.slack.com/client/T09229ZC6/C0A974TJ9). You'll need
-  to [request an invite](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up) to join.
+- **IntelliJ IDEA**: Ambiente de desenvolvimento recomendado.
+- **JDK 11 ou superior**.
+- **Gradle**: Usado como sistema de build.
+- **Arquivo de configuração Firebase**: O arquivo será fornecido separadamente e deve ser colocado na pasta `resources` do projeto.
 
-## Features
+## Configuração do Firebase
 
-Here's a list of features included in this project:
+1. **Receba o arquivo de configuração**:
+  - O arquivo de configuração do Firebase será fornecido separadamente (ex.: `serviceAccountKey.json`).
 
-| Name                                                                   | Description                                                                        |
-|------------------------------------------------------------------------|------------------------------------------------------------------------------------|
-| [Routing](https://start.ktor.io/p/routing)                             | Provides a structured routing DSL                                                  |
-| [Content Negotiation](https://start.ktor.io/p/content-negotiation)     | Provides automatic content conversion according to Content-Type and Accept headers |
-| [kotlinx.serialization](https://start.ktor.io/p/kotlinx-serialization) | Handles JSON serialization using kotlinx.serialization library                     |
-| [Static Content](https://start.ktor.io/p/static-content)               | Serves static files from defined locations                                         |
+2. **Coloque o arquivo na pasta `resources`**:
+  - Copie o arquivo fornecido e coloque-o no diretório `src/main/resources` do projeto.
 
-## Building & Running
+## Como Executar
 
-To build or run the project, use one of the following tasks:
+1. Clone o repositório:
+   ```bash
+   git clone <URL_DO_REPOSITORIO>
+   ```
 
-| Task                          | Description                                                          |
-|-------------------------------|----------------------------------------------------------------------|
-| `./gradlew test`              | Run the tests                                                        |
-| `./gradlew build`             | Build everything                                                     |
-| `buildFatJar`                 | Build an executable JAR of the server with all dependencies included |
-| `buildImage`                  | Build the docker image to use with the fat JAR                       |
-| `publishImageToLocalRegistry` | Publish the docker image locally                                     |
-| `run`                         | Run the server                                                       |
-| `runDocker`                   | Run using the local docker image                                     |
+2. Abra o projeto no IntelliJ IDEA.
 
-If the server starts successfully, you'll see the following output:
+3. Certifique-se de que as dependências estão instaladas corretamente executando:
+   ```bash
+   ./gradlew build
+   ```
 
+4. Inicie o servidor:
+  - Execute a função `main` no arquivo principal.
+
+5. A API estará disponível em `http://127.0.0.1:8080`.
+
+## Endpoints Disponíveis
+
+Abaixo está a lista de endpoints fornecidos pela API:
+
+| Método HTTP | Endpoint         | Descrição                                  |
+|-------------|------------------|------------------------------------------|
+| GET         | `/blogs`         | Retorna a lista de posts do blog.        |
+| POST        | `/data`          | Adiciona dados genéricos ao Firebase.    |
+| POST        | `/blogs`         | Adiciona um novo post ao blog.           |
+| PUT         | `/blogs/{id}`    | Atualiza um post existente pelo ID.      |
+| DELETE      | `/blogs/{id}`    | Remove um post existente pelo ID.        |
+
+## Estrutura do Projeto
+
+- `main.kt`: Configurações principais e inicialização do servidor.
+- `BlogPost.kt`: Definição da classe `BlogPost`.
+- `FirebaseModule.kt`: Configurações e inicialização do Firebase.
+- `Routing.kt`: Configuração das rotas da API.
+- `build.gradle.kts`: Configuração do Gradle.
+
+## Exemplo de Requisição
+
+### GET `/blogs`
+**Resposta de exemplo:**
+```json
+[
+  {
+    "id": "1",
+    "title": "Primeiro Post",
+    "content": "Conteúdo do primeiro post",
+    "authorId": "123",
+    "likes": 10,
+    "comments": []
+  }
+]
 ```
-2024-12-04 14:32:45.584 [main] INFO  Application - Application started in 0.303 seconds.
-2024-12-04 14:32:45.682 [main] INFO  Application - Responding at http://0.0.0.0:8080
+
+### POST `/blogs`
+**Requisição de exemplo:**
+```json
+{
+  "title": "Novo Post",
+  "content": "Conteúdo do novo post",
+  "authorId": "123",
+  "likes": 0,
+  "comments": []
+}
+```
+**Resposta:**
+```
+Blog post added
 ```
 
+## Observações
+
+- Certifique-se de configurar corretamente o Firebase antes de executar a aplicação.
+- O arquivo de configuração do Firebase deve ser colocado manualmente na pasta `resources` do projeto.
+
+---
+Se você tiver dúvidas ou problemas, abra uma issue no repositório.
