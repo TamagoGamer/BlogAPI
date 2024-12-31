@@ -34,6 +34,9 @@ fun main() {
         }
         initializeFirebase()
         routing {
+            get("/") {
+                call.respondText("Hello World!")
+            }
             get("/blogs") {
                 runBlocking { call.respondText(getData()) }
                 //call.respondText("List of blog posts")
