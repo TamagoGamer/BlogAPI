@@ -31,20 +31,6 @@ Uma aplicação de exemplo que fornece uma API para gerenciar posts de blog, uti
 2. **Coloque o arquivo no projeto**:
    - Copie o arquivo para o diretório `src/main/resources`.
 
-3. **Verifique o conteúdo do arquivo**:
-   O arquivo deve conter informações como `project_id`, `private_key`, e `client_email`. Exemplo:
-
-   ```json
-   {
-     "type": "service_account",
-     "project_id": "blog-abc21",
-     "private_key_id": "chave_privada",
-     "private_key": "-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n",
-     "client_email": "firebase-adminsdk@blog-abc21.iam.gserviceaccount.com",
-     "client_id": "123456789"
-   }
-   ```
-
 ## Como Executar
 
 1. **Clone o repositório**:
