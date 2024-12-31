@@ -22,6 +22,7 @@ Uma aplicação de exemplo que fornece uma API para gerenciar posts de blog, uti
 - **JDK 11 ou superior**: Certifique-se de ter uma versão compatível instalada.
 - **Gradle**: Usado como sistema de build.
 - **Arquivo de configuração do Firebase**: Fornecido separadamente, deve ser colocado no diretório `resources`.
+- **Usar o Postman**: para testar a base de dados.
 
 ## Configuração do Firebase
 
