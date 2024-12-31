@@ -95,12 +95,11 @@ Uma aplicação de exemplo que fornece uma API para gerenciar posts de blog, uti
 ```json
 [
   {
-    "id": "1",
-    "title": "Primeiro Post",
-    "content": "Conteúdo do primeiro post",
-    "authorId": "123",
-    "likes": 10,
-    "comments": []
+    "title":"Estou Triste",
+    "content":"Estou Triste",
+    "author":"Estou Triste",
+    "likes":"Estou Triste",
+    "comments":"Estou Triste"
   }
 ]
 ```
@@ -110,11 +109,10 @@ Uma aplicação de exemplo que fornece uma API para gerenciar posts de blog, uti
 
 ```json
 {
-  "title": "Novo Post",
-  "content": "Conteúdo do novo post",
-  "authorId": "123",
-  "likes": 0,
-  "comments": []
+    "title":"Estou Triste",
+    "content":"Estou Triste",
+    "author":"Estou Triste",
+    "likes":"5"
 }
 ```
 
