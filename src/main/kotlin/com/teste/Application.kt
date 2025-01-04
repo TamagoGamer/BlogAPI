@@ -35,16 +35,11 @@ fun main() {
         initializeFirebase()
         routing {
             get("/") {
-                call.respondText("Hello World!")
+                call.respondText("Bem vindo a API, vá ate o URL: http://127.0.0.1:8080/blogs, para conseguir olhar os dados adicionados")
             }
             get("/blogs") {
                 runBlocking { call.respondText(getData()) }
                 //call.respondText("List of blog posts")
-            }
-            post("/data") {
-                val data = call.receive<String>()
-                 addData(data)
-                call.respondText("Data added")
             }
             post("/blogs") {
                 val blogPost = call.receive<BlogPost>() // Assuming BlogPost is a data class
@@ -89,12 +84,6 @@ suspend fun getData(): String {
     })
 
     return deferred.await()
-}
-
-fun addData(data: String) {
-    val database = FirebaseDatabase.getInstance()
-    val ref = database.getReference("path/to/data")
-    ref.setValueAsync(data)
 }
 
 fun addBlogPost(blogPost: BlogPost) {

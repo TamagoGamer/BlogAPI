@@ -107,8 +107,7 @@ Uma aplicação de exemplo que fornece uma API para gerenciar posts de blog, uti
 
 ```json
 {
-  "message": "Blog post adicionado com sucesso!",
-  "id": "2"
+  "message": "Blog post added"
 }
 ```
 
